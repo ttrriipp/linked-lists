@@ -97,7 +97,7 @@ export default function LinkedList() {
   const insertAt = (value, index) => {
     let currentNode = headNode;
     let i = 0;
-    while (i < index - 1) {
+    while (i < index) {
       if (currentNode.nextNode === null) {
         return "bruh";
       }
@@ -111,7 +111,7 @@ export default function LinkedList() {
   const removeAt = (index) => {
     let currentNode = headNode;
     let i = 0;
-    while (i < index - 1) {
+    while (i < index) {
       if (currentNode.nextNode === null) {
         return "bruh";
       }
