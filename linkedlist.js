@@ -2,12 +2,8 @@ import Node from "./node.js";
 
 export default function LinkedList() {
   let headNode = new Node();
-  const append = (value) => {
-    if (headNode.value === null) {
-      headNode.value = value;
-      return;
-    }
 
+  const append = (value) => {
     let currentNode = headNode;
     while (currentNode.nextNode !== null) {
       currentNode = currentNode.nextNode;
@@ -16,16 +12,12 @@ export default function LinkedList() {
   };
 
   const prepend = (value) => {
-    if (headNode.value === null) {
-      headNode.value === value;
-      return;
-    }
-    let prevNode = headNode;
-    headNode = new Node(value, prevNode);
+    const prevNode = headNode;
+    headNode.nextNode = new Node(value, prevNode.nextNode);
   };
 
   const size = () => {
-    let c = 1;
+    let c = 0;
     let currentNode = headNode;
     while (currentNode.nextNode !== null) {
       currentNode = currentNode.nextNode;
@@ -35,7 +27,7 @@ export default function LinkedList() {
   };
 
   const head = () => {
-    return headNode.value;
+    return `( ${headNode.nextNode.value} )`;
   };
 
   const tail = () => {
@@ -43,11 +35,11 @@ export default function LinkedList() {
     while (currentNode.nextNode !== null) {
       currentNode = currentNode.nextNode;
     }
-    return currentNode.value;
+    return `( ${currentNode.value} )`;
   };
 
   const at = (index) => {
-    let currentNode = headNode;
+    let currentNode = headNode.nextNode;
     let i = 0;
     while (i !== index) {
       if (currentNode.nextNode === null) {
@@ -92,7 +84,7 @@ export default function LinkedList() {
   };
 
   const toString = () => {
-    let currentNode = headNode;
+    let currentNode = headNode.nextNode;
     let listString = `( ${currentNode.value} ) -> `;
     while (currentNode.nextNode !== null) {
       currentNode = currentNode.nextNode;
